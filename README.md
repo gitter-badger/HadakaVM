@@ -33,8 +33,6 @@ Every plattform that supports:
   ```
 
 # TODO
-- Improve file checks / Error handling (Check if a file exists, etc.)
-- Change resource locating behavior (Use data/ instead of current directory)
 - Add locale fix (Will probably result in a dependency on boost_locale)
 - Add archive memory parsing
 - Implement patch loading
