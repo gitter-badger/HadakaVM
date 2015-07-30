@@ -2,6 +2,7 @@
 Free implementation of Hadaka Shitsujis Game Engine
 
 # Changelog
+-/-  
 
 # Status
 Currently the game is not playable, as only fragments of the engine are implemented.
