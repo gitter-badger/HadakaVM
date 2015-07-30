@@ -1,13 +1,10 @@
 # HadakaVM
 Free implementation of Hadaka Shitsujis Game Engine
 
-# Changelog
--/-  
-
-# Status
+## Status
 Currently the game is not playable, as only fragments of the engine are implemented.
 
-# Supported plattforms
+## Supported plattforms
 
 Every plattform that supports:
 - Make
@@ -16,7 +13,7 @@ Every plattform that supports:
   - SDL2_image
   - SDL2_mixer
 
-## Tested plattforms / setups
+### Tested plattforms / setups
 
 - Windows ( Tested on Windows 7 SP1)
   - Compiler: MinGW 5.1.0 (I use [Nuwen.net's MinGW Distro](http://nuwen.net/mingw.html), which already has SDL2 and SDL2_mixer prepackaged)
@@ -33,7 +30,7 @@ Every plattform that supports:
   brew install sdl2 sdl2_image sdl2_mixer
   ```
 
-# TODO
+## TODO
 - Add locale fix (Will probably result in a dependency on boost_locale)
 - Implement patch loading
 - Opcode cleanup
@@ -41,7 +38,7 @@ Every plattform that supports:
 - Add debugger
 - Implement remaining opcodes
   - Variable manipulations
-  - Conditinal jumps
+  - Conditional jumps
   - Skippable sleep
 - Implement missing graphics/interface features
   - Proper rendering queue
@@ -50,6 +47,6 @@ Every plattform that supports:
   - Play SFX
   - Improve user input
 
-# License
+## License
 Licensed under the GNU General Public License v3 or any later version,  
 See [LICENSE](LICENSE).
