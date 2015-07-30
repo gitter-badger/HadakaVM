@@ -39,7 +39,7 @@ Every plattform that supports:
 - Add debugger
 - Implement remaining opcodes
   - Variable manipulations
-  - Conditinal jumps
+  - Conditional jumps
   - Skippable sleep
 - Implement missing graphics/interface features
   - Proper rendering queue
