@@ -20,6 +20,7 @@
 #include <fstream>
 
 #include "BinaryIO.hpp"
+#include "Logger.hpp"
 
 /*
 	bintools
@@ -35,13 +36,12 @@ streamoff bintools::filesize(string filename) {
 */
 
 binfile::binfile(std::string filename) : stream(filename, ios::in | ios::out | ios::binary) {
-	//stream = fstream(filename, ios::in | ios::out | ios::binary);
 	stream.seekg(0, ios::beg);
-}
+	if (!stream.good()) ERROR("Failed to open "+filename);}
 
-binfile::binfile(std::string filename,ios_base::openmode mode) :stream(filename,mode) {
-	//stream = fstream(filename.c_str(), mode);
+binfile::binfile(std::string filename,ios_base::openmode mode) : stream(filename,mode) {
 	stream.seekg(0, ios::beg);
+	if (!stream.good()) ERROR("Failed to open "+filename);
 }
 
 //Close

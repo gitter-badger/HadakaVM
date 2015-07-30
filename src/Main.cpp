@@ -50,10 +50,10 @@ int main(int argc,char** argv)
 
 	try {
 	//Simple msg test
-	MessageFile msg("msg.dat");
+	MessageFile msg("data/msg.dat");
 
 	//Simple Archive test
-	ArchiveFile mlink("mlink.dat");
+	ArchiveFile mlink("data/mlink.dat");
 
 	char* bgm01 = mlink.get("BGM_01.ogg");
 	if (bgm01 == nullptr)
@@ -63,7 +63,7 @@ int main(int argc,char** argv)
 		return 1;
 	}
 
-	ScenarioRunner sr("snr.dat");
+	ScenarioRunner sr("data/snr.dat");
 	sr.start();
 
  } catch(string msg) {

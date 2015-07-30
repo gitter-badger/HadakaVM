@@ -27,7 +27,7 @@ ResourceManager::~ResourceManager()
   }
 }
 
-ResourceManager::ResourceManager() : msg("msg.dat") {}
+ResourceManager::ResourceManager() : msg("data/msg.dat") {}
 
 std::string ResourceManager::getMessage(uint32_t id) { return msg.get(id); }
 

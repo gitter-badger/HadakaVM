@@ -192,12 +192,15 @@ void ScenarioRunner::runScenario(std::string name)
 			switch (opr) {case 0x0: cond=(a==b); break;case 0x1: break;case 0x3: break;case 0x4:break;case 0x5: break;default: ERROR("Unknown Jump Code: "+to_string(opr));};\
 			if (cond) {OP_JUMP;} else {DWORD;};
 
+		//Load Archive
+		#define OP_LOAD_ARCHIVE(type) r_manager.loadArchive(type,"data/"+STR)
+
 		#define op(name,code,operation) if (code==opcode) {LOG(name);operation;cout<<endl;did=true;}
 			op("JUMP"            ,0x0001,OP_JUMP                              ) //ADDR
 			op("UNKNOWN (0x0005)",0x0005,OP_JUMP_IF                           ) //COND. JUMP (ADDR,CMP,VALUE,JMP_TARGET)
-			op("GRAPHICS"        ,0x0081,r_manager.loadArchive("graphics",STR)) //STR
-			op("SOUND"           ,0x0082,r_manager.loadArchive("sound",STR)   ) //STR
-			op("MUSIC"           ,0x0083,r_manager.loadArchive("music",STR)   ) //STR
+			op("GRAPHICS"        ,0x0081,OP_LOAD_ARCHIVE("graphics")          ) //STR
+			op("SOUND"           ,0x0082,OP_LOAD_ARCHIVE("sound")             ) //STR
+			op("MUSIC"           ,0x0083,OP_LOAD_ARCHIVE("music")             ) //STR
 			op("SCALE_DOWN"      ,0x0084,DWORD                                ) //Constant to scale down window contents(?)
 			op("OPEN_WINDOW"     ,0x0085,window.init()                        ) //Init Window
 			op("WINDOW_ICON"     ,0x0086,STR                                  ) //STR(ICON);Useless as SDL2_image can't load .ico files
