@@ -35,7 +35,6 @@ Every plattform that supports:
 
 # TODO
 - Add locale fix (Will probably result in a dependency on boost_locale)
-- Add archive memory parsing
 - Implement patch loading
 - Opcode cleanup
 - Universal register

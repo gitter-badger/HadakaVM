@@ -27,27 +27,24 @@
 
 ArchiveFile::ArchiveFile(std::string path) : file(path)
 {
+	uint32_t pc = 0;
 	uint16_t filecount;
-	char buffer[6];
+	char buffer[18];
 	char* s_buffer = reinterpret_cast<char*>(buffer);
 
-	unsigned char desiredMagic[] = {0x47,0x4C,0x4E,0x4B,0x6E,0x00}; //"GLNKn\0"
-
-  if (!file.read(buffer,6))
+  if (!file.read(buffer,8))
 		ERROR("Failed to read magic");
 
   //This could be done in a easier manner (e.g. strcmp, std::string::compare), but this doesn't really work with MinGW
-  for (uint8_t i=0;i < 6;i++)
-		if (buffer[i]!=desiredMagic[i])
-			ERROR("Invalid magic");
+  for (char c : {0x47,0x4C,0x4E,0x4B,0x6E,0x00})
+		if (c!=buffer[pc++]) ERROR("Invalid magic");
 
   //Header Filecount
-  if (!file.read(filecount))
-		ERROR("Failed to read filecount")
+  filecount = *reinterpret_cast<uint16_t*>(&buffer[6]);
 
     /*
      In this part that we skip here, there are the following "values":
-     A static version number; Not checked by the game (?)
+     A static version number; Checked by the game; Can be simply ignored
      Some kind of checksum; Not checked by the game either (?)
      */
     if (!file.skipg(10))
