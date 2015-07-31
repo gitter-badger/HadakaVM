@@ -33,19 +33,14 @@ struct Texture
   bool autoSize = false;
 };
 
-//Temporary
-typedef Texture Texture2D;
-typedef Rectangle Rectangle2D;
-typedef Point Point2D;
-
 struct MultiTexture : Rectangle
 {
   std::map<std::string,std::string> texture;
 };
 
-struct Button2D
+struct Button
 {
-  Rectangle2D position;
+  Rectangle position;
   std::string t_default="",t_hover="",t_click="",t_bg="";
 };
 

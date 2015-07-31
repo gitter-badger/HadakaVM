@@ -97,31 +97,31 @@ class ScenarioRunner
 		//I should probably use map's instead
 		std::map<std::string,uint32_t> reg_dword;
 		std::map<std::string,std::string> reg_str;
-		std::map<std::string,Rectangle2D> reg_rect;
-		std::map<std::string,Point2D> reg_point;
-		std::map<std::string,Texture2D> reg_texture;
-		std::map<std::string,Button2D> reg_btn;
+		std::map<std::string,Rectangle> reg_rect;
+		std::map<std::string,Point> reg_point;
+		std::map<std::string,Texture> reg_texture;
+		std::map<std::string,Button> reg_btn;
 
 		//Temporary variables for storing stuff (Will be stored elsewhere later on)
 
 		//Save preview
-		Rectangle2D savePreview_save,savePreview_load;
+		Rectangle savePreview_save,savePreview_load;
 
 		//savePreview_load
 		uint32_t saveCount,saveConst;
 
 		//Text Box
-		Texture2D textBox_frame,textBox_bg;
+		Texture textBox_frame,textBox_bg;
 		//Name Box
-		Texture2D nameBox_frame,nameBox_bg;
+		Texture nameBox_frame,nameBox_bg;
 		//Choice Box
 		std::string choiceBox_frame,choiceBox_bg;
 		std::string choiceBox_frame_ON,choiceBox_bg_ON;
 
 		//Text Bounds
-		Rectangle2D textbox_textBounds;
-		Rectangle2D namebox_textBounds;
-		Rectangle2D choicebox_textBounds;
+		Rectangle textbox_textBounds;
+		Rectangle namebox_textBounds;
+		Rectangle choicebox_textBounds;
 
 		vector<Scenario> scenarios;
 		Window window;
