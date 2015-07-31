@@ -1,11 +1,18 @@
-CC = c++
-CC_FLAGS = -std=c++11 -g
-LD_FLAGS = -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_image
-INCLUDE_DIR = include/
+# Licensed under the GNU GPL v3+, see LICENSE
 
-all: md_build
-	$(CC) src/*.cpp -o build/HadakaVM -I$(INCLUDE_DIR) $(SDL_INCLUDE_DIRS) $(SDL_FLAGS) $(SDL_LIBRARY_DIR) $(CC_FLAGS) $(SDL_LIBRARY_DIR) $(LD_FLAGS)
-md_build:
-	-@mkdir build
+CXX_FLAGS = -std=c++11 -g -Iinclude
+LD_FLAGS = -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_image
+
+CPP_FILES = $(wildcard src/*.cpp)
+OBJ_FILES = $(addprefix build/obj/,$(notdir $(CPP_FILES:.cpp=.o)))
+
+all: build/obj build/HadakaVM
+build/HadakaVM: $(OBJ_FILES)
+	$(CXX) $(LD_FLAGS) -o $@ $^
+build/obj/%.o: src/%.cpp
+	$(CXX) $(CXX_FLAGS) -c -o $@ $^
+build/obj:
+	-@mkdir build/obj
 clean:
-	rm build/HadakaVM*
+	-@rm -r build/obj/*.o
+	-@rm -r build/HadakaVM*
