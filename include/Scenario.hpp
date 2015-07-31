@@ -83,18 +83,34 @@ class ScenarioRunner
 		ScenarioRunner(std::string path);
 		~ScenarioRunner();
 		void runScenario(std::string name);
-		std::string getString(std::string name);
-		uint32_t getDWORD(std::string name);
+
+		std::string getString();
+		uint32_t getDWORD();
+
+		ResourceManager* getResourceManager();
+		Window* getWindow();
+
+		void setPC(uint32_t pc);
+		uint32_t getPC();
+
+		Scenario* getScenario();
+		void setScenario(Scenario s); //Don't use this method for running Scenarios, use runScenario instead!
+
+		void setTitleScenario(std::string s);
+
+		void setLogicVar(uint32_t key,uint32_t value);
+		uint32_t getLogicVar(uint32_t key);
+
 		void start();
+		void exit();
 	private:
 		Parameter getParameter();
 		char* buffer;
 		uint32_t pc;
 		std::string ss_name,ts_name;
-		uint32_t hs_files,hs_total,s_count;
-		streamoff bufferLength;
+		streamoff fsize;
 
-		//I should probably use map's instead
+		std::map<uint32_t,uint32_t> reg_logic;
 		std::map<std::string,uint32_t> reg_dword;
 		std::map<std::string,std::string> reg_str;
 		std::map<std::string,Rectangle> reg_rect;
@@ -102,28 +118,8 @@ class ScenarioRunner
 		std::map<std::string,Texture> reg_texture;
 		std::map<std::string,Button> reg_btn;
 
-		//Temporary variables for storing stuff (Will be stored elsewhere later on)
-
-		//Save preview
-		Rectangle savePreview_save,savePreview_load;
-
-		//savePreview_load
-		uint32_t saveCount,saveConst;
-
-		//Text Box
-		Texture textBox_frame,textBox_bg;
-		//Name Box
-		Texture nameBox_frame,nameBox_bg;
-		//Choice Box
-		std::string choiceBox_frame,choiceBox_bg;
-		std::string choiceBox_frame_ON,choiceBox_bg_ON;
-
-		//Text Bounds
-		Rectangle textbox_textBounds;
-		Rectangle namebox_textBounds;
-		Rectangle choicebox_textBounds;
-
 		vector<Scenario> scenarios;
+		Scenario c_scenario;
 		Window window;
 		ResourceManager r_manager;
 		binfile file;

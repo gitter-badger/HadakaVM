@@ -33,7 +33,6 @@ Every plattform that supports:
 ## TODO
 - Add locale fix (Will probably result in a dependency on boost_locale)
 - Implement patch loading
-- Opcode cleanup
 - Universal register
 - Add debugger
 - Implement remaining opcodes

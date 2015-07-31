@@ -21,4 +21,37 @@
 
 #include "Scenario.hpp"
 
+namespace Operation
+{
+  //Archive
+  void archive_graphics(ScenarioRunner* sr);
+  void archive_music(ScenarioRunner* sr);
+  void archive_sound(ScenarioRunner* sr);
+  //Window
+  void window_icon(ScenarioRunner* sr);
+  void window_title(ScenarioRunner* sr);
+  void window_open(ScenarioRunner* sr);
+  //Audio
+  void play_uncategorized(ScenarioRunner* sr);
+  void play_bgm(ScenarioRunner* sr);
+  void play_sfx(ScenarioRunner* sr);
+  //Jump
+  void jump(ScenarioRunner* sr);
+  void jump_conditinal(ScenarioRunner* sr);
+  //Scenario
+  void scenario_enter(ScenarioRunner* sr);
+  void scenario_title_set(ScenarioRunner* sr);
+  //Choice
+  void choice_add(ScenarioRunner* sr);
+  void choices_show(ScenarioRunner* sr);
+  //Variable
+  void set(ScenarioRunner* sr);
+  void add(ScenarioRunner* sr);
+  //Other
+  void sleep(ScenarioRunner* sr);
+  void exit(ScenarioRunner* sr);
+  void stop(ScenarioRunner* sr);
+  void scale_down(ScenarioRunner* sr);
+}
+
 #endif
