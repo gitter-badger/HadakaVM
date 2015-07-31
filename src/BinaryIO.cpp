@@ -26,7 +26,8 @@
 	bintools
 */
 
-streamoff bintools::filesize(string filename) {
+streamoff bintools::filesize(string filename)
+{
 	ifstream str(filename, ios::ate | ios::binary);
 	return str.tellg();
 }
@@ -35,11 +36,14 @@ streamoff bintools::filesize(string filename) {
 	binfile
 */
 
-binfile::binfile(std::string filename) : stream(filename, ios::in | ios::out | ios::binary) {
+binfile::binfile(std::string filename) : stream(filename, ios::in | ios::out | ios::binary)
+{
 	stream.seekg(0, ios::beg);
-	if (!stream.good()) ERROR("Failed to open "+filename);}
+	if (!stream.good()) ERROR("Failed to open "+filename);
+}
 
-binfile::binfile(std::string filename,ios_base::openmode mode) : stream(filename,mode) {
+binfile::binfile(std::string filename,ios_base::openmode mode) : stream(filename,mode)
+{
 	stream.seekg(0, ios::beg);
 	if (!stream.good()) ERROR("Failed to open "+filename);
 }
@@ -50,33 +54,48 @@ void binfile::close() {
 }
 
 //Read
-bool binfile::read(char* buffer, unsigned int length) {
-	for (unsigned int i = 0; i < length; i++) { if (!stream.get(buffer[i])) return false; }
+bool binfile::read(char* buffer, unsigned int length)
+{
+	for (unsigned int i = 0; i < length; i++)
+		if (!stream.get(buffer[i])) return false;
 	return true;
 }
 
-bool binfile::read(unsigned char* buffer, unsigned int length) {
+bool binfile::read(unsigned char* buffer, unsigned int length)
+{
 	return read(reinterpret_cast<char*>(buffer), length);
 }
 
 //Write
-bool binfile::writenull(unsigned int length) {
-	for (unsigned int i = 0;i < length;i++) { if (!stream.put(0x0)) return false; }
+bool binfile::writenull(unsigned int length)
+{
+	for (unsigned int i = 0;i < length;i++)
+		if (!stream.put(0x0)) return false;
 	return true;
 }
 
 //Seek, Skip - Read
-bool binfile::seekg(streamoff offset) {
+bool binfile::seekg(streamoff offset)
+{
 	stream.seekg(offset);
-	if (stream.fail()) { return false; } else { return true; }
+	return !stream.fail();
 }
-bool binfile::skipg(streamoff offset) {  return seekg(stream.tellg() + offset); }
-streampos binfile::tellg() { return stream.tellg();  }
+
+bool binfile::skipg(streamoff offset)
+{return seekg(stream.tellg() + offset);}
+
+streampos binfile::tellg()
+{return stream.tellg();}
 
 //Seek, Skip - Write
-bool binfile::seekp(streamoff offset) {
+bool binfile::seekp(streamoff offset)
+{
 	stream.seekp(offset);
-	if (stream.fail()) { return false; } else { return true; }
+	return !stream.fail();
 }
-bool binfile::skipp(streamoff offset) { return seekp(stream.tellp() + offset); }
-streampos binfile::tellp() { return stream.tellp(); }
+
+bool binfile::skipp(streamoff offset)
+{return seekp(stream.tellp() + offset);}
+
+streampos binfile::tellp()
+{return stream.tellp();}
