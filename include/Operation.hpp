@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef OPERATION_HPP_
-#define OPERATION_HPP_
+#ifndef OPERATION_HPP
+#define OPERATION_HPP
 
 #include "Scenario.hpp"
 

@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef RESOURCEMANAGER_HPP_
-#define RESOURCEMANAGER_HPP_
+#ifndef RESOURCEMANAGER_HPP
+#define RESOURCEMANAGER_HPP
 
 #include <string>
 #include <stdint.h>

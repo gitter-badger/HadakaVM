@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef LOGGER_HPP_
-#define LOGGER_HPP_
+#ifndef LOGGER_HPP
+#define LOGGER_HPP
 
 #include <libgen.h>
 #include <iostream>

@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef WINDOW_HPP_
-#define WINDOW_HPP_
+#ifndef WINDOW_HPP
+#define WINDOW_HPP
 
 #include <stdint.h>
 #include <string>

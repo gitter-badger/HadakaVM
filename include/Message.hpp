@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef MESSAGE_HPP_
-#define MESSAGE_HPP_
+#ifndef MESSAGE_HPP
+#define MESSAGE_HPP
 
 #include <string>
 #include <fstream>

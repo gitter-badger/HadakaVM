@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef ARCHIVE_HPP_
-#define ARCHIVE_HPP_
+#ifndef ARCHIVE_HPP
+#define ARCHIVE_HPP
 
 #include <string>
 #include <vector>
