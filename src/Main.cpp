@@ -29,7 +29,7 @@
 
 using namespace std;
 
-int main(int argc,char** argv)
+int main()
 {
 	cout << "HadakaVM: Free implementation of Hadaka Shitsujis Game Engine" << endl
 			 << "Copyright (C) 2015 imbatman/spycrab0" << endl
