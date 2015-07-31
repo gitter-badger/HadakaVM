@@ -1,6 +1,6 @@
 # Licensed under the GNU GPL v3+, see LICENSE
 
-CXX_FLAGS = -std=c++11 -g -Iinclude
+CXX_FLAGS = -std=c++11 -g -Iinclude -Wall -Wextra -pedantic
 LD_FLAGS = -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_image
 
 CPP_FILES = $(wildcard src/*.cpp)
