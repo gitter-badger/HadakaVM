@@ -1,4 +1,4 @@
-CC = g++
+CC = c++
 CC_FLAGS = -std=c++11 -g
 LD_FLAGS = -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_image
 INCLUDE_DIR = include/
@@ -8,4 +8,4 @@ all: md_build
 md_build:
 	-@mkdir build
 clean:
-	rm build/HadakaVM.exe
+	rm build/HadakaVM*
