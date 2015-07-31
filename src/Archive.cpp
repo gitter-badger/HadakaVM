@@ -77,9 +77,7 @@ ArchiveFile::ArchiveFile(std::string path) : file(path)
 }
 
 vector<ArchiveEntry>& ArchiveFile::getFiles()
-{
-	return files;
-}
+{return files;}
 
 char* ArchiveFile::get(std::string name)
 {
