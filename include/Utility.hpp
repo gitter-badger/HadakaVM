@@ -21,6 +21,7 @@
 
 #include <stdint.h>
 #include <string>
+#include <map>
 
 struct Rectangle {uint32_t x=0,y=0,width=0,height=0;};
 struct Point {uint32_t x=0,y=0;};
