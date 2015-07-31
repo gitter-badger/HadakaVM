@@ -36,7 +36,7 @@ void Window::init()
 }
 
 void Window::setTitle(std::string title)
-{ this->title = title; }
+{this->title = title;}
 
 bool Window::update()
 {
