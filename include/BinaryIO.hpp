@@ -53,7 +53,8 @@ class binfile
 		bool read(unsigned char* buffer, unsigned int length);
 
 		template <class T>
-		bool read(T& val) {
+		bool read(T& val)
+		{
 			char buffer[sizeof(T)];
 			unsigned char* u_buffer = reinterpret_cast<unsigned char*>(buffer);
 			if (!read(u_buffer, sizeof(T))) return false;
@@ -66,13 +67,15 @@ class binfile
 		bool writenull(unsigned int length);
 
 		template <class T>
-		bool write(T* buffer,unsigned int length) {
+		bool write(T* buffer,unsigned int length)
+		{
 			if (!stream.write(buffer, length)) return false;
 			return true;
 		};
 
 		template <class T>
-		bool write(T& val) {
+		bool write(T& val)
+		{
 			char buffer[sizeof(T)];
 			for (uint32_t i = 0; i < sizeof(T); i++) {
 				char byte = (val >> (8*i)) & 0xFF;

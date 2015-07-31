@@ -1,7 +1,7 @@
 /*
     HadakaVM: Free implementation of Hadaka Shitsujis Game Engine
     Copyright (C) 2015 spycrab0
-
+A
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -23,7 +23,8 @@
 #include <string>
 #include <SDL2/SDL.h>
 
-class Window {
+class Window
+{
   public:
     void setTitle(std::string title);
     void init();

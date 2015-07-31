@@ -26,7 +26,8 @@
 struct Rectangle {uint32_t x=0,y=0,width=0,height=0;};
 struct Point {uint32_t x=0,y=0;};
 
-struct Texture {
+struct Texture
+{
   Rectangle position;
   std::string texture = "";
   bool autoSize = false;
@@ -37,11 +38,13 @@ typedef Texture Texture2D;
 typedef Rectangle Rectangle2D;
 typedef Point Point2D;
 
-struct MultiTexture : Rectangle {
+struct MultiTexture : Rectangle
+{
   std::map<std::string,std::string> texture;
 };
 
-struct Button2D {
+struct Button2D
+{
   Rectangle2D position;
   std::string t_default="",t_hover="",t_click="",t_bg="";
 };
