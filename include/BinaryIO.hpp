@@ -29,7 +29,7 @@ using namespace std;
 namespace bintools
 {
 	streamoff filesize(string path);
-};
+}
 
 class binfile
 {
@@ -61,7 +61,7 @@ class binfile
 			val = 0;
 			for (uint32_t i = 0; i < sizeof(T); i++) val += u_buffer[i] << i * 8;
 			return true;
-		};
+		}
 
 		//Write
 		bool writenull(unsigned int length);
@@ -71,7 +71,7 @@ class binfile
 		{
 			if (!stream.write(buffer, length)) return false;
 			return true;
-		};
+		}
 
 		template <class T>
 		bool write(T& val)
@@ -82,7 +82,7 @@ class binfile
 				buffer[i] = byte;
 			}
 			return write(buffer,sizeof(T));
-		};
+		}
 
 	private:
 		fstream stream;
