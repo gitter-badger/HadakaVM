@@ -24,17 +24,18 @@
 ConfigFile::ConfigFile(std::string path)
 {
   this->path = path;
-  std::ifstream ifs(path);
-  if (!ifs.good()) {
-    ifs.close();
-    ifs = std::ifstream(path,std::fstream::app);
-    if (!ifs.good()) ERROR("Failed to open "+path);
+  std::ifstream* ifs = new std::ifstream(path);
+  if (!ifs->good()) {
+    ifs->close();
+    delete ifs;
+    ifs = new std::ifstream(path,std::fstream::app);
+    if (!ifs->good()) ERROR("Failed to open "+path);
   }
-  ifs.seekg(0, std::ios::beg);
+  ifs->seekg(0, std::ios::beg);
 
   std::string line,prefix="";
-  for (uint32_t lineNr = 1;ifs.good();lineNr++) {
-    getline(ifs,line);
+  for (uint32_t lineNr = 1;ifs->good();lineNr++) {
+    getline(*ifs,line);
 
     if (line.size()<1) {
       continue;
@@ -73,7 +74,7 @@ ConfigFile::ConfigFile(std::string path)
       entries[prefix+key] = std::stoi(s_value,nullptr);
     }
   }
-  ifs.close();
+  ifs->close();
   LOG("Loaded "+std::to_string(entries.size())+" pair(s) from "+path);
 }
 
