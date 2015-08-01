@@ -16,30 +16,26 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef RESOURCEMANAGER_HPP
-#define RESOURCEMANAGER_HPP
+#ifndef CONFIG_HPP
+#define CONFIG_HPP
 
-#include <string>
 #include <stdint.h>
+#include <string>
 #include <map>
+#include <fstream>
 
-#include "Archive.hpp"
-#include "Message.hpp"
-#include "Config.hpp"
-
-class ResourceManager
+class ConfigFile
 {
   public:
-    ResourceManager();
-    ~ResourceManager();
-    void loadArchive(std::string name,std::string archive);
-    char* getFile(std::string name,std::string file);
-    std::string getMessage(uint32_t id);
+    ConfigFile(std::string path);
+    std::map<std::string,std::uint32_t>& getEntries();
+    uint32_t get(std::string key);
+    void set(std::string key,uint32_t value);
+    bool isSet(std::string key);
+    void write();
   private:
-    void checkConfig();
-    ConfigFile hadaka_cfg,vm_cfg;
-    MessageFile msg;
-    std::map<std::string,ArchiveFile*> archives;
+    std::string path;
+    std::map<std::string,std::uint32_t> entries;
 };
 
 #endif

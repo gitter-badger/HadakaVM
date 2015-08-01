@@ -27,7 +27,13 @@ ResourceManager::~ResourceManager()
   }
 }
 
-ResourceManager::ResourceManager() : msg("data/msg.dat") {}
+ResourceManager::ResourceManager() : hadaka_cfg("hadaka.env"), vm_cfg("HadakaVM.cfg"), msg("data/msg.dat") {checkConfig();}
+
+void ResourceManager::checkConfig()
+{
+  if (!vm_cfg.isSet("DEBUGGER.ENABLE")) vm_cfg.set("DEBUGGER.ENABLE",0);
+  vm_cfg.write();
+}
 
 std::string ResourceManager::getMessage(uint32_t id) { return msg.get(id); }
 
