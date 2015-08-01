@@ -47,7 +47,12 @@ bool Window::update()
       case SDL_QUIT:
         return false;
       break;
-      case SDL_MOUSEBUTTONDOWN:
+      case SDL_KEYDOWN:
+        switch (evt.key.keysym.sym) {
+          case SDLK_ESCAPE:
+            return false;
+          break;
+        }
       break;
     }
   }
