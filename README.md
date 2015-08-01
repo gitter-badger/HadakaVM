@@ -15,8 +15,8 @@ Every plattform that supports:
 
 ### Tested plattforms / setups
 
-- Windows ( Tested on Windows 7 SP1)
-  - Compiler: MinGW 5.1.0 (I use [Nuwen.net's MinGW Distro](http://nuwen.net/mingw.html), which already has SDL2 and SDL2_mixer prepackaged)
+- Windows (Tested on Windows 7 SP1)
+  - Compiler: GCC 5.1.0 (I use [Nuwen.net's MinGW Distro](http://nuwen.net/mingw.html), which already has SDL2 and SDL2_mixer prepackaged)
   - Install dependencies:
     - [SDL2](https://www.libsdl.org/download-2.0.php)
       - [SDL2_image](https://www.libsdl.org/projects/SDL_image/)
@@ -24,7 +24,7 @@ Every plattform that supports:
 
 
 - OSX (Tested on OS X 10.10.1)
-  - Compiler: Apple's Clang (Part of Xcode Command Line Tools)
+  - Compiler: Apple's Clang (Part of Xcode Command Line Tools) / GCC 5.2.0
   - Install dependencies (Using Homebrew):
   ```
   brew install sdl2 sdl2_image sdl2_mixer
