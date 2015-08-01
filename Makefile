@@ -8,7 +8,7 @@ OBJ_FILES = $(addprefix build/obj/,$(notdir $(CPP_FILES:.cpp=.o)))
 
 all: build build/obj build/HadakaVM
 build/HadakaVM: $(OBJ_FILES)
-	$(CXX) $(LD_FLAGS) -o $@ $^
+	$(CXX) -o $@ $^ $(LD_FLAGS)
 build/obj/%.o: src/%.cpp
 	$(CXX) $(CXX_FLAGS) -c -o $@ $^
 build:
