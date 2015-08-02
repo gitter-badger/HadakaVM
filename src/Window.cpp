@@ -34,26 +34,26 @@ void Window::init()
 void Window::setTitle(std::string title)
 {this->title = title;}
 
-//TODO Make Window::update() return enum
-bool Window::update()
+UpdateEvent Window::update()
 {
+  UpdateEvent u_evt;
   SDL_Event evt;
   while (SDL_PollEvent(&evt)) {
     switch (evt.type)
     {
       case SDL_QUIT:
-        return false;
+        u_evt.type = UpdateEventType::EXIT;
       break;
       case SDL_KEYDOWN:
         switch (evt.key.keysym.sym) {
           case SDLK_ESCAPE:
-            return false;
+            u_evt.type = UpdateEventType::EXIT;
           break;
         }
       break;
     }
   }
-  return true;
+  return u_evt;
 }
 
 void Window::sleep(uint32_t ms,bool skippable)

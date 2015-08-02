@@ -23,12 +23,30 @@ A
 #include <string>
 #include <SDL2/SDL.h>
 
+enum class UpdateEventType
+{
+  NOTHING,
+  EXIT,
+  CLICK
+};
+
+struct UpdateEventClick
+{
+  uint32_t x,y;
+};
+
+struct UpdateEvent
+{
+  UpdateEventType type=UpdateEventType::NOTHING;
+  UpdateEventClick* click=0;
+};
+
 class Window
 {
   public:
     void setTitle(std::string title);
     void init();
-    bool update();
+    UpdateEvent update();
     void sleep(uint32_t ms,bool skippable);
   private:
     std::string icon,title;

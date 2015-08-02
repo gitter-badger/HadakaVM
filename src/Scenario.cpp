@@ -234,7 +234,7 @@ void ScenarioRunner::runScenario(std::string name)
 					getParameter();
 				}
 				cout << endl;
-				if (!window.update())
+				if (window.update().type==UpdateEventType::EXIT)
 					Operation::exit(this);
 	}
 	if (name == ss_name)
