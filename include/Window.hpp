@@ -32,7 +32,7 @@ enum class UpdateEventType
 
 struct UpdateEventClick
 {
-  uint32_t x,y;
+  int x,y;
 };
 
 struct UpdateEvent

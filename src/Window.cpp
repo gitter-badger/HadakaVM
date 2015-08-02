@@ -49,9 +49,7 @@ UpdateEvent Window::update()
           case SDL_BUTTON_LEFT:
             u_evt.type = UpdateEventType::CLICK;
             u_evt.click = new UpdateEventClick;
-            //TODO Get mouse position
-            u_evt.click->x = 0;
-            u_evt.click->y = 0;
+            SDL_GetMouseState(&u_evt.click->x,&u_evt.click->y);
             break;
         }
         break;
@@ -60,9 +58,7 @@ UpdateEvent Window::update()
           case SDLK_SPACE:
             u_evt.type = UpdateEventType::CLICK;
             u_evt.click = new UpdateEventClick;
-            //TODO Get mouse position
-            u_evt.click->x = 0;
-            u_evt.click->y = 0;
+            SDL_GetMouseState(&u_evt.click->x,&u_evt.click->y);
             break;
           case SDLK_ESCAPE:
             u_evt.type = UpdateEventType::EXIT;
