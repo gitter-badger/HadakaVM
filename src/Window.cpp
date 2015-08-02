@@ -21,10 +21,6 @@
 #include <chrono>
 #include <SDL2/SDL.h>
 
-#ifdef __MINGW32__
-  #include <windows.h>
-#endif
-
 #include "Window.hpp"
 #include "Logger.hpp"
 
@@ -38,6 +34,7 @@ void Window::init()
 void Window::setTitle(std::string title)
 {this->title = title;}
 
+//TODO Make Window::update() return enum
 bool Window::update()
 {
   SDL_Event evt;
@@ -61,13 +58,33 @@ bool Window::update()
 
 void Window::sleep(uint32_t ms,bool skippable)
 {
-  //TODO Implement skippable
-  SDL_Delay(ms);
-  LOG("A");
-  #ifdef __MINGW32__
-    Sleep(ms*1000);
-  #else
-    std::this_thread::sleep_for(std::chrono::milliseconds(ms));
-  #endif
-  LOG("B");
+  if (skippable)
+  {
+    uint64_t c_old = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+    for (uint64_t c_now=c_old;c_now-c_old < ms;c_now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count())
+    {
+      bool skip=false;
+      //TODO Merge with Window::update()
+      SDL_Event evt;
+      while (SDL_PollEvent(&evt)) {
+        switch (evt.type) {
+          case SDL_KEYDOWN:
+            switch (evt.key.keysym.sym) {
+              case SDLK_SPACE:
+                skip=true;
+                break;
+            }
+            break;
+          case SDL_MOUSEBUTTONDOWN:
+            switch (evt.button.button) {
+              case SDL_BUTTON_LEFT:
+                skip=true;
+                break;
+            }
+            break;
+        }
+      }
+      if (skip) break;
+    }
+  } else {SDL_Delay(ms);}
 }

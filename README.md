@@ -38,7 +38,6 @@ Every plattform that supports:
 - Implement remaining opcodes
   - Variable manipulations
   - Conditional jumps
-  - Skippable sleep
 - Implement missing graphics/interface features
   - Proper rendering queue
   - Set/Update images
