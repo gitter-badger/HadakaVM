@@ -37,19 +37,16 @@ int main()
 			 << "This program comes with ABSOLUTELY NO WARRANTY." << endl
 			 << "Licensed under the GNU GPL v3+; see LICENSE" << endl << endl;
 
-	if (SDL_Init(SDL_INIT_EVERYTHING)==-1)
-	{
+	if (SDL_Init(SDL_INIT_EVERYTHING)==-1) {
 		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"HadakaVM","Failed to initalize SDL2",nullptr);
 		return 1;
 	}
-	if (IMG_Init(IMG_INIT_PNG)==-1)
-	{
+	if (IMG_Init(IMG_INIT_PNG)==-1) {
 		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"HadakaVM","Failed to initalize SDL2_image",nullptr);
 		SDL_Quit();
 		return 1;
 	}
-	if ((Mix_Init(MIX_INIT_OGG))==-1)
-	{
+	if (Mix_Init(MIX_INIT_OGG)==-1) {
 		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"HadakaVM","Failed to initalize SDL2_image",nullptr);
 		IMG_Quit();
 		SDL_Quit();
@@ -64,8 +61,7 @@ int main()
 	ArchiveFile mlink("data/mlink.dat");
 
 	char* bgm01 = mlink.get("BGM_01.ogg");
-	if (bgm01 == nullptr)
-	{
+	if (bgm01 == nullptr) {
 		cout << "Couldn't get BGM_01.ogg" << endl;
 		SDL_Quit();
 		return 1;
