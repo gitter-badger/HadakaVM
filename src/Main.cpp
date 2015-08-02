@@ -21,6 +21,7 @@
 #include <locale.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_mixer.h>
 
 #include "Logger.hpp"
 #include "Message.hpp"
@@ -34,7 +35,7 @@ int main()
 	cout << "HadakaVM: Free implementation of Hadaka Shitsujis Game Engine" << endl
 			 << "Copyright (C) 2015 imbatman/spycrab0" << endl
 			 << "This program comes with ABSOLUTELY NO WARRANTY." << endl
-			 << "Licensed under the GNU GPL v3; see LICENSE" << endl << endl;
+			 << "Licensed under the GNU GPL v3+; see LICENSE" << endl << endl;
 
 	if (SDL_Init(SDL_INIT_EVERYTHING)==-1)
 	{
@@ -44,6 +45,13 @@ int main()
 	if (IMG_Init(IMG_INIT_PNG)==-1)
 	{
 		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"HadakaVM","Failed to initalize SDL2_image",nullptr);
+		SDL_Quit();
+		return 1;
+	}
+	if ((Mix_Init(MIX_INIT_OGG))==-1)
+	{
+		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"HadakaVM","Failed to initalize SDL2_image",nullptr);
+		IMG_Quit();
 		SDL_Quit();
 		return 1;
 	}
@@ -76,6 +84,8 @@ int main()
 		return 1;
  }
 
+	IMG_Quit();
+	Mix_Quit();
 	SDL_Quit();
 	return 0;
 }
