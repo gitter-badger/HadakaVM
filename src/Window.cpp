@@ -43,9 +43,27 @@ UpdateEvent Window::update()
     {
       case SDL_QUIT:
         u_evt.type = UpdateEventType::EXIT;
-      break;
+        break;
+      case SDL_MOUSEBUTTONDOWN:
+        switch (evt.button.button) {
+          case SDL_BUTTON_LEFT:
+            u_evt.type = UpdateEventType::CLICK;
+            u_evt.click = new UpdateEventClick;
+            //TODO Get mouse position
+            u_evt.click->x = 0;
+            u_evt.click->y = 0;
+            break;
+        }
+        break;
       case SDL_KEYDOWN:
         switch (evt.key.keysym.sym) {
+          case SDLK_SPACE:
+            u_evt.type = UpdateEventType::CLICK;
+            u_evt.click = new UpdateEventClick;
+            //TODO Get mouse position
+            u_evt.click->x = 0;
+            u_evt.click->y = 0;
+            break;
           case SDLK_ESCAPE:
             u_evt.type = UpdateEventType::EXIT;
           break;
@@ -63,28 +81,7 @@ void Window::sleep(uint32_t ms,bool skippable)
     uint64_t c_old = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
     for (uint64_t c_now=c_old;c_now-c_old < ms;c_now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count())
     {
-      bool skip=false;
-      //TODO Merge with Window::update()
-      SDL_Event evt;
-      while (SDL_PollEvent(&evt)) {
-        switch (evt.type) {
-          case SDL_KEYDOWN:
-            switch (evt.key.keysym.sym) {
-              case SDLK_SPACE:
-                skip=true;
-                break;
-            }
-            break;
-          case SDL_MOUSEBUTTONDOWN:
-            switch (evt.button.button) {
-              case SDL_BUTTON_LEFT:
-                skip=true;
-                break;
-            }
-            break;
-        }
-      }
-      if (skip) break;
+        if (Window::update().type==UpdateEventType::CLICK) break;
     }
   } else {SDL_Delay(ms);}
 }
