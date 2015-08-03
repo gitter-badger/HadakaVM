@@ -125,7 +125,7 @@ Parameter ScenarioRunner::getParameter()
 			pc+=4;
 		break;
 		default:
-			ERROR("Unknown Parametercode "+strInt(*reinterpret_cast<uint8_t*>(p.type))+";This indicates a parsing error");
+			ERROR("Unknown Parametercode; This indicates a parsing error");
 		break;
 	}
 	return p;
