@@ -11,7 +11,7 @@ Every plattform that supports:
 - C++11 (Clang/GCC tested)
 - SDL2
   - SDL2_image
-  - SDL2_mixer
+  - SDL2_mixer (With libvorbis support)
 
 ### Tested plattforms / setups
 
@@ -27,7 +27,7 @@ Every plattform that supports:
   - Compiler: Apple's Clang (Part of Xcode Command Line Tools) / GCC 5.2.0
   - Install dependencies (Using Homebrew):
   ```
-  brew install sdl2 sdl2_image sdl2_mixer
+  brew install sdl2 sdl2_image sdl2_mixer --with-libvorbis
   ```
 
 ## TODO
