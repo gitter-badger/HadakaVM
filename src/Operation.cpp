@@ -58,6 +58,7 @@ void Operation::jump_conditinal(ScenarioRunner* sr)
       case 0x4:
         break;
       case 0x5:
+        cond=true; //Placeholder
         break;
       default:
       ERROR("Unknown Jump Code: "+to_string(opr));
