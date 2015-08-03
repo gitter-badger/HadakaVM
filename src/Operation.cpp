@@ -39,7 +39,7 @@ inline void playSFX(ScenarioRunner* sr)
 inline void playBGM(ScenarioRunner* sr)
 {
   uint32_t size=0;
-  SDL_RWops* rw = SDL_RWFromMem(sr->getResourceManager()->getFile("sound",sr->getString(),size),size);
+  SDL_RWops* rw = SDL_RWFromMem(sr->getResourceManager()->getFile("music",sr->getString(),size),size);
   Mix_Music* music = Mix_LoadMUS_RW(rw,1);
   Mix_PlayMusic(music,-1);
 }
