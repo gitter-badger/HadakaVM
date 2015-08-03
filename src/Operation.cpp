@@ -23,8 +23,10 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
 
-//Macros
-#define LOAD_ARCHIVE(type) sr->getResourceManager()->loadArchive(type,"data/"+sr->getString());
+inline void loadArchive(ScenarioRunner* sr,std::string type)
+{
+  sr->getResourceManager()->loadArchive(type,"data/"+sr->getString());
+}
 
 inline void playSFX(ScenarioRunner* sr)
 {
@@ -35,9 +37,9 @@ inline void playSFX(ScenarioRunner* sr)
 }
 
 //Archive
-void Operation::archive_graphics(ScenarioRunner* sr) {LOAD_ARCHIVE("graphics");}
-void Operation::archive_music(ScenarioRunner* sr) {LOAD_ARCHIVE("music");}
-void Operation::archive_sound(ScenarioRunner* sr) {LOAD_ARCHIVE("sound");}
+void Operation::archive_graphics(ScenarioRunner* sr) {loadArchive(sr,"graphics");}
+void Operation::archive_music(ScenarioRunner* sr) {loadArchive(sr,"music");}
+void Operation::archive_sound(ScenarioRunner* sr) {loadArchive(sr,"sound");}
 
 //Jump
 void Operation::jump(ScenarioRunner* sr)
