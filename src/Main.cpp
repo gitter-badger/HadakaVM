@@ -60,7 +60,8 @@ int main()
 	//Simple Archive test
 	ArchiveFile mlink("data/mlink.dat");
 
-	char* bgm01 = mlink.get("BGM_01.ogg");
+	uint32_t& size;
+	char* bgm01 = mlink.get("BGM_01.ogg",size);
 	if (bgm01 == nullptr) {
 		cout << "Couldn't get BGM_01.ogg" << endl;
 		SDL_Quit();
