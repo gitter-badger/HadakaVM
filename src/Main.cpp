@@ -52,6 +52,13 @@ int main()
 		SDL_Quit();
 		return 1;
 	}
+	if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY,MIX_DEFAULT_FORMAT,2,1024)==-1) {
+		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"HadakaVM","Failed to open audio",nullptr);
+		Mix_Quit();
+		IMG_Quit();
+		SDL_Quit();
+		return 1;
+	}
 
 	try {
 	//Simple msg test
@@ -60,7 +67,7 @@ int main()
 	//Simple Archive test
 	ArchiveFile mlink("data/mlink.dat");
 
-	uint32_t& size;
+	uint32_t size=0;
 	char* bgm01 = mlink.get("BGM_01.ogg",size);
 	if (bgm01 == nullptr) {
 		cout << "Couldn't get BGM_01.ogg" << endl;
@@ -82,6 +89,7 @@ int main()
  }
 
 	IMG_Quit();
+	Mix_CloseAudio();
 	Mix_Quit();
 	SDL_Quit();
 	return 0;
