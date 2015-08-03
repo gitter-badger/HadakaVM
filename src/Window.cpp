@@ -26,7 +26,6 @@
 
 void Window::init()
 {
-  //TODO Init code
   sdl_window = SDL_CreateWindow("HadakaVM",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,800,600,SDL_WINDOW_SHOWN);
   surface = SDL_GetWindowSurface(sdl_window);
 }

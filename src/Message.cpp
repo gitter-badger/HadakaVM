@@ -20,10 +20,7 @@
 #include "Logger.hpp"
 #include <string>
 
-MessageFile::~MessageFile()
-{
-    delete[] buffer;
-}
+MessageFile::~MessageFile() {delete[] buffer;}
 
 MessageFile::MessageFile(std::string path) : file(path)
 {

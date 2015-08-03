@@ -23,8 +23,6 @@
 #include "Logger.hpp"
 #include "Archive.hpp"
 
-//TODO Parse header from char* buffer
-
 ArchiveFile::ArchiveFile(std::string path) : file(path)
 {
 	uint32_t pc = 0;
@@ -32,8 +30,7 @@ ArchiveFile::ArchiveFile(std::string path) : file(path)
 	char buffer[18];
 	char* s_buffer = reinterpret_cast<char*>(buffer);
 
-  if (!file.read(buffer,8))
-		ERROR("Failed to read magic");
+  if (!file.read(buffer,8)) ERROR("Failed to read magic");
 
   //This could be done in a easier manner (e.g. strcmp, std::string::compare), but this doesn't really work with MinGW
   for (char c : {0x47,0x4C,0x4E,0x4B,0x6E,0x00})
@@ -47,13 +44,12 @@ ArchiveFile::ArchiveFile(std::string path) : file(path)
      A static version number; Checked by the game; Can be simply ignored
      Some kind of checksum; Not checked by the game either (?)
      */
-    if (!file.skipg(10))
-			ERROR("Failed to skip end of file header");
+    if (!file.skipg(10)) ERROR("Failed to skip end of file header");
 
     //Reading the file entries
-
     for (int i = 0;i < filecount;i++) {
 			ArchiveEntry a_file;
+
 			//Read file name
 			unsigned char nameLength;
       if (!file.read(s_buffer[0])) ERROR("Failed to read "+to_string(i)+"'s name length")
@@ -76,8 +72,7 @@ ArchiveFile::ArchiveFile(std::string path) : file(path)
 	LOG("Loaded "+path);
 }
 
-vector<ArchiveEntry>& ArchiveFile::getFiles()
-{return files;}
+vector<ArchiveEntry>& ArchiveFile::getFiles() {return files;}
 
 char* ArchiveFile::get(std::string name,uint32_t& size)
 {

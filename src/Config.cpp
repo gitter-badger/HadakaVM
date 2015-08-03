@@ -81,27 +81,30 @@ ConfigFile::ConfigFile(std::string path)
 uint32_t ConfigFile::get(std::string key) {return entries[key];}
 void ConfigFile::set(std::string key,uint32_t value) {entries[key] = value;}
 bool ConfigFile::isSet(std::string key) {return entries.find(key)!=entries.end();}
+
 std::map<std::string,std::uint32_t>& ConfigFile::getEntries() {return entries;}
 
 void ConfigFile::write()
 {
   std::ofstream ofs(path);
-  //TODO Implement
   std::string c_prefix = "";
   for (auto& pair : entries) {
+
     //Get prefix
     std::string prefix = "";
     for (char c : pair.first) {
       prefix+=c;
       if (c=='.') break;
     }
+
+    //If there's now path/prefix seperator, there is no prefix
     if (prefix[prefix.size()-1] != '.') prefix="";
 
-    if (prefix!=c_prefix) {
+    if (prefix!=c_prefix)
       ofs << "[" << prefix.substr(0,prefix.size()-1) << "]\r\n";
-    }
 
     c_prefix=prefix;
+    
     //Get key
     std::string key = pair.first.substr(prefix.size());
     std::string value = std::to_string(pair.second);

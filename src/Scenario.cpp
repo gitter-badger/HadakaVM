@@ -43,6 +43,7 @@ ScenarioRunner::ScenarioRunner(std::string path) : file(path)
 
 	//Check Signature
 	if (*reinterpret_cast<uint32_t*>(&buffer[0x0]) != 0x204C5348) ERROR("Invalid signature: "+strInt(*reinterpret_cast<uint32_t*>(&buffer[0x4])));
+
 	//Check Version
 	if (*reinterpret_cast<uint16_t*>(&buffer[0x4]) != 0x64) ERROR("Invalid version");
 
@@ -147,11 +148,8 @@ void ScenarioRunner::runScenario(std::string name)
 		uint16_t opcode = *reinterpret_cast<uint16_t*>(&buffer[pc]);
 		pc+=2;
 
-		//Operations that would be to big for the table and destroy its layout
-
 		std::map<uint16_t,void(*)(ScenarioRunner* sr)> opcodes;
 
-		//Archive
 		opcodes[0x0001] = Operation::jump;
 		opcodes[0x0005] = Operation::jump_conditinal;
 		opcodes[0x0081] = Operation::archive_graphics;
@@ -184,7 +182,6 @@ void ScenarioRunner::runScenario(std::string name)
 			LOG("Couldn't find OPCODE;CONT.");
 		}
 
-			//Not safe at all, but probably the best available option
 			uint16_t p_count;
 			switch (opcode) {
 					case 0x0085: case 0x00CB: case 0x0102: case 0x010A: case 0x012D: case 0x012E:

@@ -64,18 +64,6 @@ Next up:
 Discover 5,1,116,10E,113's purpose.
 
 */
-enum class I_Operation : uint16_t
-{
-	DRAW_IMAGE = 0x00C8,
-	LOAD_SGF = 0x0118,
-	SET_INGAME_MENU = 0x011A,
-	SET_CONFIG = 0x011B,
-	SET_SAVE_LOAD = 0x011E,
-	SET_SAVE_LOAD_TOPBAR = 0x12A,
-	SET_LOG_BTN = 0x12B,
-	LOAD_OGG = 0x0126,
-	SET_LOG = 0x015E,
-};
 
 class ScenarioRunner
 {

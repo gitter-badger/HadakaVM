@@ -35,7 +35,7 @@ void ResourceManager::checkConfig()
   vm_cfg.write();
 }
 
-std::string ResourceManager::getMessage(uint32_t id) { return msg.get(id); }
+std::string ResourceManager::getMessage(uint32_t id) {return msg.get(id);}
 
 char* ResourceManager::getFile(std::string name,std::string file,uint32_t& size)
 {

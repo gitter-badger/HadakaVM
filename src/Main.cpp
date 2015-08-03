@@ -18,7 +18,6 @@
 
 #include <iostream>
 #include <string>
-#include <locale.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
@@ -28,14 +27,12 @@
 #include "Archive.hpp"
 #include "Scenario.hpp"
 
-using namespace std;
-
 int main()
 {
-	cout << "HadakaVM: Free implementation of Hadaka Shitsujis Game Engine" << endl
-			 << "Copyright (C) 2015 imbatman/spycrab0" << endl
-			 << "This program comes with ABSOLUTELY NO WARRANTY." << endl
-			 << "Licensed under the GNU GPL v3+; see LICENSE" << endl << endl;
+	std::cout << "HadakaVM: Free implementation of Hadaka Shitsujis Game Engine" << std::endl
+			 << "Copyright (C) 2015 imbatman/spycrab0" << std::endl
+			 << "This program comes with ABSOLUTELY NO WARRANTY." << std::endl
+			 << "Licensed under the GNU GPL v3+; see LICENSE" << std::endl << std::endl;
 
 	if (SDL_Init(SDL_INIT_EVERYTHING)==-1) {
 		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"HadakaVM","Failed to initalize SDL2",nullptr);
@@ -70,8 +67,7 @@ int main()
 	uint32_t size=0;
 	char* bgm01 = mlink.get("BGM_01.ogg",size);
 	if (bgm01 == nullptr) {
-		cout << "Couldn't get BGM_01.ogg" << endl;
-		throw "ArchiveFile test failed";
+		ERROR("ArchiveFile Test: Couldn't get BGM_01.ogg");
 	}
 
 	ScenarioRunner sr("data/snr.dat");

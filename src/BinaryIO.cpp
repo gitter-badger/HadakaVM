@@ -22,20 +22,15 @@
 #include "BinaryIO.hpp"
 #include "Logger.hpp"
 
-/*
-	bintools
-*/
-
+//bintools
 streamoff bintools::filesize(string filename)
 {
 	ifstream str(filename, ios::ate | ios::binary);
 	return str.tellg();
 }
 
-/*
-	binfile
-*/
 
+//binfile
 binfile::binfile(std::string filename) : stream(filename, ios::in | ios::out | ios::binary)
 {
 	stream.seekg(0, ios::beg);
@@ -49,9 +44,7 @@ binfile::binfile(std::string filename,ios_base::openmode mode) : stream(filename
 }
 
 //Close
-void binfile::close() {
-	stream.close();
-}
+void binfile::close() {stream.close();}
 
 //Read
 bool binfile::read(char* buffer, unsigned int length)
@@ -81,11 +74,9 @@ bool binfile::seekg(streamoff offset)
 	return !stream.fail();
 }
 
-bool binfile::skipg(streamoff offset)
-{return seekg(stream.tellg() + offset);}
+bool binfile::skipg(streamoff offset) {return seekg(stream.tellg() + offset);}
 
-streampos binfile::tellg()
-{return stream.tellg();}
+streampos binfile::tellg() {return stream.tellg();}
 
 //Seek, Skip - Write
 bool binfile::seekp(streamoff offset)
@@ -94,8 +85,6 @@ bool binfile::seekp(streamoff offset)
 	return !stream.fail();
 }
 
-bool binfile::skipp(streamoff offset)
-{return seekp(stream.tellp() + offset);}
+bool binfile::skipp(streamoff offset) {return seekp(stream.tellp() + offset);}
 
-streampos binfile::tellp()
-{return stream.tellp();}
+streampos binfile::tellp() {return stream.tellp();}
