@@ -38,8 +38,6 @@ Every plattform that supports:
 - Implement remaining opcodes
   - Variable manipulations
   - Conditional jumps
-- Audio
-  - Play BGM
 - Implement missing graphics features
   - Proper rendering queue
   - Set/Update images

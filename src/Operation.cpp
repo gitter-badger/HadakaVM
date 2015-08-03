@@ -36,6 +36,14 @@ inline void playSFX(ScenarioRunner* sr)
   Mix_PlayChannel(-1,chunk,0);
 }
 
+inline void playBGM(ScenarioRunner* sr)
+{
+  uint32_t size=0;
+  SDL_RWops* rw = SDL_RWFromMem(sr->getResourceManager()->getFile("sound",sr->getString(),size),size);
+  Mix_Music* music = Mix_LoadMUS_RW(rw,1);
+  Mix_PlayMusic(music,-1);
+}
+
 //Archive
 void Operation::archive_graphics(ScenarioRunner* sr) {loadArchive(sr,"graphics");}
 void Operation::archive_music(ScenarioRunner* sr) {loadArchive(sr,"music");}
@@ -85,7 +93,7 @@ void Operation::play_sfx(ScenarioRunner* sr)
 
 void Operation::play_bgm(ScenarioRunner* sr)
 {
-  sr->getString();
+  playBGM(sr);
   sr->getDWORD();
 }
 
