@@ -19,6 +19,7 @@
 #include <iostream>
 #include <string>
 #include <stdint.h>
+#include <algorithm>
 
 #include "Logger.hpp"
 #include "Archive.hpp"
@@ -77,7 +78,10 @@ vector<ArchiveEntry>& ArchiveFile::getFiles() {return files;}
 char* ArchiveFile::get(std::string name,uint32_t& size)
 {
 	for (ArchiveEntry& f : files) {
-		if (f.name == name) {
+		std::string c_name = f.name;
+		std::transform(c_name.begin(), c_name.end(), c_name.begin(), ::tolower);
+		std::transform(name.begin(), name.end(), name.begin(), ::tolower);
+		if (c_name == name) {
 			file.seekg(f.offset);
 			char* buffer = new char[f.size];
 			file.read(buffer,f.size);
