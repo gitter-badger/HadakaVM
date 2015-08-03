@@ -71,8 +71,7 @@ int main()
 	char* bgm01 = mlink.get("BGM_01.ogg",size);
 	if (bgm01 == nullptr) {
 		cout << "Couldn't get BGM_01.ogg" << endl;
-		SDL_Quit();
-		return 1;
+		throw "ArchiveFile test failed";
 	}
 
 	ScenarioRunner sr("data/snr.dat");
@@ -80,11 +79,17 @@ int main()
 
  } catch(string msg) {
 		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"HadakaVM",("Error: "+msg).c_str(),nullptr);
+
+		IMG_Quit();
+		Mix_CloseAudio();
+		Mix_Quit();
 		SDL_Quit();
 		return 1;
  } catch(char const* msg) {
-		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"HadakaVM",("Error: "+string(msg)).c_str(),nullptr);
- 		SDL_Quit();
+	 	IMG_Quit();
+	 	Mix_CloseAudio();
+	 	Mix_Quit();
+	 	SDL_Quit();
 		return 1;
  }
 
