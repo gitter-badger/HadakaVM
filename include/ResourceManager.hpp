@@ -33,7 +33,7 @@ class ResourceManager
     ResourceManager();
     ~ResourceManager();
     void loadArchive(std::string name,std::string archive);
-    char* getFile(std::string name,std::string file);
+    char* getFile(std::string name,std::string file,uint32_t& size);
     std::string getMessage(uint32_t id);
   private:
     void checkConfig();

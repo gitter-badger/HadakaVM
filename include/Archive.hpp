@@ -36,7 +36,7 @@ class ArchiveFile
 {
 	public:
 		ArchiveFile(std::string path);
-		char* get(std::string name);
+		char* get(std::string name,uint32_t& size);
 		vector<ArchiveEntry>& getFiles();
 	private:
 		vector<ArchiveEntry> files;

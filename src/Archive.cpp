@@ -79,13 +79,14 @@ ArchiveFile::ArchiveFile(std::string path) : file(path)
 vector<ArchiveEntry>& ArchiveFile::getFiles()
 {return files;}
 
-char* ArchiveFile::get(std::string name)
+char* ArchiveFile::get(std::string name,uint32_t& size)
 {
 	for (ArchiveEntry& f : files) {
 		if (f.name == name) {
 			file.seekg(f.offset);
 			char* buffer = new char[f.size];
 			file.read(buffer,f.size);
+			size=f.size;
 			return buffer;
 		}
 	}

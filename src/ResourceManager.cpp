@@ -37,11 +37,11 @@ void ResourceManager::checkConfig()
 
 std::string ResourceManager::getMessage(uint32_t id) { return msg.get(id); }
 
-char* ResourceManager::getFile(std::string name,std::string file)
+char* ResourceManager::getFile(std::string name,std::string file,uint32_t& size)
 {
   if (archives.count(name) == 0)
     ERROR("Requested unloaded '"+name+"'");
-  return archives[name]->get(file);
+  return archives[name]->get(file,size);
 }
 
 void ResourceManager::loadArchive(std::string name,std::string archive) { archives[name] = new ArchiveFile(archive); }
