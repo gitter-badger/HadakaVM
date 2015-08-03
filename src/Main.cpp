@@ -86,6 +86,8 @@ int main()
 		SDL_Quit();
 		return 1;
  } catch(char const* msg) {
+	 	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"HadakaVM",("Error: "+string(msg)).c_str(),nullptr);
+
 	 	IMG_Quit();
 	 	Mix_CloseAudio();
 	 	Mix_Quit();
