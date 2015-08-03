@@ -36,7 +36,6 @@ Every plattform that supports:
 - Universal register
 - Add debugger
 - Implement remaining opcodes
-  - Conditional jumps
 - Implement missing graphics features
   - Proper rendering queue
   - Set/Update images
