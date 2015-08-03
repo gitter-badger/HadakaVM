@@ -155,8 +155,8 @@ void ScenarioRunner::runScenario(std::string name)
 		opcodes[0x0001] = Operation::jump;
 		opcodes[0x0005] = Operation::jump_conditinal;
 		opcodes[0x0081] = Operation::archive_graphics;
-		opcodes[0x0082] = Operation::archive_sound;
-		opcodes[0x0083] = Operation::archive_music;
+		opcodes[0x0082] = Operation::archive_music;
+		opcodes[0x0083] = Operation::archive_sound;
 		opcodes[0x0084] = Operation::scale_down;
 		opcodes[0x0085] = Operation::window_open;
 		opcodes[0x0086] = Operation::window_icon;
