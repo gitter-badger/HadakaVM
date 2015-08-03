@@ -20,8 +20,19 @@
 #include "Scenario.hpp"
 #include "Logger.hpp"
 
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
+
 //Macros
 #define LOAD_ARCHIVE(type) sr->getResourceManager()->loadArchive(type,"data/"+sr->getString());
+
+inline void playSFX(ScenarioRunner* sr)
+{
+  uint32_t size=0;
+  SDL_RWops* rw = SDL_RWFromMem(sr->getResourceManager()->getFile("sound",sr->getString(),size),size);
+  Mix_Chunk* chunk = Mix_LoadWAV_RW(rw,1);
+  Mix_PlayChannel(-1,chunk,0);
+}
 
 //Archive
 void Operation::archive_graphics(ScenarioRunner* sr) {LOAD_ARCHIVE("graphics");}
@@ -57,14 +68,14 @@ void Operation::jump_conditinal(ScenarioRunner* sr)
 //Audio
 void Operation::play_uncategorized(ScenarioRunner* sr)
 {
-  sr->getString();
+  playSFX(sr);
   sr->getDWORD();
   sr->getDWORD();
 }
 
 void Operation::play_sfx(ScenarioRunner* sr)
 {
-  sr->getString();
+  playSFX(sr);
   sr->getDWORD();
   sr->getDWORD();
 }

@@ -38,12 +38,11 @@ Every plattform that supports:
 - Implement remaining opcodes
   - Variable manipulations
   - Conditional jumps
-- Implement missing graphics/interface features
+- Audio
+  - Play BGM
+- Implement missing graphics features
   - Proper rendering queue
   - Set/Update images
-  - Play BGM
-  - Play SFX
-  - Improve user input
 
 ## License
 Licensed under the GNU General Public License v3 or any later version,  
