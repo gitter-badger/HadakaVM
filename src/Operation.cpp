@@ -137,7 +137,7 @@ void Operation::add(ScenarioRunner* sr)
 }
 
 //Other
-void Operation::sleep(ScenarioRunner* sr) {sr->getWindow()->sleep(sr->getDWORD(),sr->getDWORD());}
+void Operation::sleep(ScenarioRunner* sr) {sr->getWindow()->sleep(sr,sr->getDWORD(),sr->getDWORD());}
 void Operation::exit(ScenarioRunner* sr) {sr->exit();ERROR("Execution halted by user")}
 void Operation::stop(ScenarioRunner* sr) {sr->exit();ERROR("Received stop signal by engine");}
 void Operation::scale_down(ScenarioRunner* sr) {sr->getDWORD();}

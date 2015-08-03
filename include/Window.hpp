@@ -1,7 +1,7 @@
 /*
     HadakaVM: Free implementation of Hadaka Shitsujis Game Engine
     Copyright (C) 2015 spycrab0
-    
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -22,6 +22,8 @@
 #include <stdint.h>
 #include <string>
 #include <SDL2/SDL.h>
+
+class ScenarioRunner;
 
 enum class UpdateEventType
 {
@@ -47,7 +49,7 @@ class Window
     void setTitle(std::string title);
     void init();
     UpdateEvent update();
-    void sleep(uint32_t ms,bool skippable);
+    void sleep(ScenarioRunner* sr,uint32_t ms,bool skippable);
   private:
     std::string icon,title;
     SDL_Window* sdl_window;
