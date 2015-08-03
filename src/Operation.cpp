@@ -54,21 +54,28 @@ void Operation::jump(ScenarioRunner* sr)
 {
   sr->setPC(sr->getScenario()->offset+4+sr->getDWORD());
 }
+
 void Operation::jump_conditinal(ScenarioRunner* sr)
 {
   uint32_t a = sr->getDWORD(),opr = sr->getDWORD(), b = sr->getDWORD();bool cond=false;
     switch (opr) {
-      case 0x0:
-      cond=(a==b);
+      case 0x0: //ZERO
+        cond = (a-b)==0;
         break;
-      case 0x1:
+      case 0x1: //NOT LESS EQUALS
+        cond = !(a<=b);
         break;
-      case 0x3:
+      case 0x2: //LESS
+        cond = a<b;
         break;
-      case 0x4:
+      case 0x3: //NOT LESS
+        cond = !(a<b);
         break;
-      case 0x5:
-        cond=true; //Placeholder
+      case 0x4: //LESS EQUALS
+        cond = a<=b;
+        break;
+      case 0x5: //NOT ZERO
+        cond = (a-b)!=0;
         break;
       default:
       ERROR("Unknown Jump Code: "+to_string(opr));
