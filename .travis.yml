@@ -5,7 +5,7 @@ compiler:
   - clang
 
 before_install:
-  - sudo apt-add-repository -y ppa:zoogie/sdl2-snapshots
+  - sudo apt-add-repository --yes ppa:zoogie/sdl2-snapshots
 
 install:
   - sudo apt-get install -y libsdl2
