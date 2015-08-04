@@ -1,4 +1,4 @@
-# HadakaVM
+# HadakaVM [![Build Status](https://travis-ci.org/spycrab/HadakaVM.svg)](https://travis-ci.org/spycrab/HadakaVM)
 Free implementation of Hadaka Shitsujis Game Engine
 
 ## Status
