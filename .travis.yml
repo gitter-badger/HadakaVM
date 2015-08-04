@@ -6,10 +6,11 @@ compiler:
 
 before_install:
   - sudo apt-add-repository --yes ppa:zoogie/sdl2-snapshots
+  - sudo apt-get update
 
 install:
-  - sudo apt-get install -y libsdl2
-  - sudo apt-get install -y libsdl2-image
-  - sudo apt-get install -y libsdl2-mixer
+  - sudo apt-get install -y libsdl2-dev
+  - sudo apt-get install -y libsdl2-image-dev
+  - sudo apt-get install -y libsdl2-mixer-dev
 
 script: make clean all
