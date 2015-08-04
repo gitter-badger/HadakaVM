@@ -14,8 +14,6 @@ install:
   - sudo apt-get install -y libsdl2-image-dev
   - sudo apt-get install -y libsdl2-mixer-dev
   - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.8; fi
-
-before_install:
   - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8"; fi
 
 script: make all
