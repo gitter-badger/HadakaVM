@@ -5,8 +5,11 @@ compiler:
   - clang
 
 before_install:
-  - sudo apt-get install -y libsdl2-dev
-  - sudo apt-get install -y libsdl2-image-dev
-  - sudo apt-get install -y libsdl2-mixer-dev
+  - sudo apt-add-repository -y ppa:zoogie/sdl2-snapshots
+
+install:
+  - sudo apt-get install -y libsdl2
+  - sudo apt-get install -y libsdl2-image
+  - sudo apt-get install -y libsdl2-mixer
 
 script: make clean all
