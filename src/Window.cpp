@@ -74,14 +74,15 @@ void Window::sleep(ScenarioRunner* sr,uint32_t ms,bool skippable)
 {
   if (skippable)
   {
+    uint32_t skip=1;
     uint64_t c_old = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
     for (uint64_t c_now=c_old;c_now-c_old < ms;c_now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count())
     {
         if (Window::update().type==UpdateEventType::CLICK) {
-          sr->setLogicVar(0,0);
+          skip=0;
           break;
         }
     }
-    sr->setLogicVar(0,1);
+    sr->setLogicVar(0,skip);
   } else {SDL_Delay(ms);}
 }
