@@ -115,6 +115,8 @@ Parameter ScenarioRunner::getParameter()
 		break;
 		case p_type::DWORD_0:
 		case p_type::DWORD_3:
+		case p_type::DWORD_5:
+		case p_type::DWORD_6:
 			p.value.dword = *reinterpret_cast<uint32_t*>(&buffer[pc]);
 			cout << p.value.dword << "; ";
 			pc+=4;

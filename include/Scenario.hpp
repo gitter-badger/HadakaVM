@@ -37,7 +37,7 @@ struct Scenario
 
 
 enum class p_type : uint8_t
-	{ DWORD_0 = 0x0,STRING = 0x2,DWORD_3 = 0x3,ADDR = 0x40 };
+	{ DWORD_0 = 0x0,STRING = 0x2,DWORD_3 = 0x3,DWORD_5=0x5,DWORD_6=0x6,ADDR = 0x40};
 
 struct Parameter
 {
