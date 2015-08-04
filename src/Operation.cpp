@@ -57,7 +57,7 @@ void Operation::jump(ScenarioRunner* sr)
 
 void Operation::jump_conditinal(ScenarioRunner* sr)
 {
-  uint32_t a = sr->getDWORD(),opr = sr->getDWORD(), b = sr->getDWORD();bool cond=false;
+  uint32_t a = sr->getLogicVar(sr->getDWORD()),opr = sr->getDWORD(), b = sr->getDWORD();bool cond=false;
     switch (opr) {
       case 0x0: //ZERO
         cond = (a-b)==0;
