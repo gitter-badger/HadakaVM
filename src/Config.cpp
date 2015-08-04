@@ -55,22 +55,18 @@ ConfigFile::ConfigFile(std::string path)
         continue;
       }
 
-      bool eq=false;
       std::string key="",s_value="";
 
-      for (char c : line) {
-        if (c=='=') {
-          eq=true;
-          continue;
+      for (uint32_t i = 0;i < line.size();i++) {
+        if (line[i]=='=') {
+          key = line.substr(0,i);
+          s_value = line.substr(i+1);
+          break;
         }
-
-        if (c==' ' || c=='\t' || c=='\n' || c=='\r') continue;
-        if (!eq) {key+=c;} else {s_value=+c;}
+        if (i==line.size()-1) ERROR("Missing equals sign / no value assigned at line "+std::to_string(lineNr));
       }
 
       LOG(prefix+key+"="+s_value);
-
-      if (!eq) ERROR("Missing '=' in "+path+" in line "+std::to_string(lineNr));
       entries[prefix+key] = std::stoi(s_value,nullptr);
     }
   }
@@ -104,7 +100,7 @@ void ConfigFile::write()
       ofs << "[" << prefix.substr(0,prefix.size()-1) << "]\r\n";
 
     c_prefix=prefix;
-    
+
     //Get key
     std::string key = pair.first.substr(prefix.size());
     std::string value = std::to_string(pair.second);
