@@ -36,7 +36,7 @@ class ResourceManager
     char* getFile(std::string name,std::string file,uint32_t& size);
     std::string getMessage(uint32_t id);
   private:
-    void checkConfig();
+    void initConfig();
     ConfigFile hadaka_cfg,vm_cfg;
     MessageFile msg;
     std::map<std::string,ArchiveFile*> archives;

@@ -20,6 +20,8 @@
 #include "Logger.hpp"
 #include <string>
 
+#include <SDL2/SDL_mixer.h>
+
 ResourceManager::~ResourceManager()
 {
   for(std::map<std::string,ArchiveFile*>::iterator it = archives.begin(); it != archives.end(); ++it) {
@@ -27,10 +29,15 @@ ResourceManager::~ResourceManager()
   }
 }
 
-ResourceManager::ResourceManager() : hadaka_cfg("hadaka.env"), vm_cfg("HadakaVM.cfg"), msg("data/msg.dat") {checkConfig();}
+ResourceManager::ResourceManager() : hadaka_cfg("hadaka.env"), vm_cfg("HadakaVM.cfg"), msg("data/msg.dat") {initConfig();}
 
-void ResourceManager::checkConfig()
+void ResourceManager::initConfig()
 {
+  //Hadaka Config
+  if (hadaka_cfg.isSet("CONFIG.SE")) Mix_Volume(-1,(MIX_MAX_VOLUME/100)*hadaka_cfg.get("CONFIG.SE"));
+  if (hadaka_cfg.isSet("CONFIG.BGM")) Mix_VolumeMusic((MIX_MAX_VOLUME/100)*hadaka_cfg.get("CONFIG.BGM"));
+
+  //VM Config
   if (!vm_cfg.isSet("DEBUGGER.ENABLE")) vm_cfg.set("DEBUGGER.ENABLE",0);
   vm_cfg.write();
 }
