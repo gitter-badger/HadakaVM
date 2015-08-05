@@ -2,7 +2,8 @@
 Free implementation of Hadaka Shitsujis Game Engine
 
 ## Status
-Currently the game is not playable, as only fragments of the engine are implemented.
+Currently the game is not playable, as only fragments of the engine are implemented.  
+See [Operation Codes](https://github.com/spycrab/HadakaVM/wiki/Operation-Codes)  
 
 ## Supported plattforms
 
