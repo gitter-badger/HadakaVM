@@ -47,8 +47,7 @@ struct UpdateEvent
 struct Layer
 {
   uint32_t x=0,y=0,alpha=100;
-  std::string name;
-  SDL_Surface* surface;
+  SDL_Surface* surface=nullptr;
 };
 
 class Window
