@@ -44,6 +44,18 @@ inline void playBGM(ScenarioRunner* sr)
   Mix_PlayMusic(music,-1);
 }
 
+//Video
+void Operation::image_set(ScenarioRunner* sr)
+{
+  uint32_t layer = sr->getDWORD();
+  std::string image = sr->getString();
+  sr->getDWORD();
+  sr->getDWORD();
+  sr->getDWORD();
+  sr->getDWORD();
+  sr->getDWORD();
+}
+
 //Archive
 void Operation::archive_graphics(ScenarioRunner* sr) {loadArchive(sr,"graphics");}
 void Operation::archive_music(ScenarioRunner* sr) {loadArchive(sr,"music");}

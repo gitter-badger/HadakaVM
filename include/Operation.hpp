@@ -41,6 +41,8 @@ namespace Operation
   //Scenario
   void scenario_enter(ScenarioRunner* sr);
   void scenario_title_set(ScenarioRunner* sr);
+  //Image
+  void image_set(ScenarioRunner* sr);
   //Choice
   void choice_add(ScenarioRunner* sr);
   void choices_show(ScenarioRunner* sr);
