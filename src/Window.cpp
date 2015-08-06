@@ -34,6 +34,19 @@ void Window::init()
 void Window::setTitle(std::string title)
 {this->title = title;}
 
+void Window::setLayer(uint32_t id,Layer layer)
+{
+  layer_buffer[id] = layer;
+}
+
+void Window::flushLayers(uint32_t fadeIn)
+{
+  for (auto it : layer_buffer) {
+    layers[it.first] = it.second;
+  }
+  layer_buffer.clear();
+}
+
 UpdateEvent Window::update()
 {
   UpdateEvent u_evt;

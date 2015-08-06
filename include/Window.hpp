@@ -21,6 +21,7 @@
 
 #include <stdint.h>
 #include <string>
+#include <map>
 #include <SDL2/SDL.h>
 
 class ScenarioRunner;
@@ -43,6 +44,13 @@ struct UpdateEvent
   UpdateEventClick* click=0;
 };
 
+struct Layer
+{
+  uint32_t x=0,y=0,alpha=100;
+  std::string name;
+  SDL_Surface* surface;
+};
+
 class Window
 {
   public:
@@ -50,7 +58,10 @@ class Window
     void init();
     UpdateEvent update();
     void sleep(ScenarioRunner* sr,uint32_t ms,bool skippable);
+    void setLayer(uint32_t id,Layer layer);
+    void flushLayers(uint32_t fadeIn);
   private:
+    std::map<uint32_t,Layer> layers,layer_buffer;
     std::string icon,title;
     SDL_Window* sdl_window;
     SDL_Surface* surface;
