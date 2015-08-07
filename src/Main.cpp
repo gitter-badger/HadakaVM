@@ -74,21 +74,21 @@ int main()
 	sr.start();
 
  } catch(string msg) {
-		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"HadakaVM",("Error: "+msg).c_str(),nullptr);
+	 IMG_Quit();
+	 Mix_CloseAudio();
+	 Mix_Quit();
 
-		IMG_Quit();
-		Mix_CloseAudio();
-		Mix_Quit();
-		SDL_Quit();
-		return 1;
+	 SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"HadakaVM",("Error: "+msg).c_str(),nullptr);
+	 SDL_Quit();
+	 return 1;
  } catch(char const* msg) {
-	 	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"HadakaVM",("Error: "+string(msg)).c_str(),nullptr);
+	 IMG_Quit();
+	 Mix_CloseAudio();
+	 Mix_Quit();
 
-	 	IMG_Quit();
-	 	Mix_CloseAudio();
-	 	Mix_Quit();
-	 	SDL_Quit();
-		return 1;
+	 SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"HadakaVM",("Error: "+string(msg)).c_str(),nullptr);
+	 SDL_Quit();
+	 return 1;
  }
 
 	IMG_Quit();
