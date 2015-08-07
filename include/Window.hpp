@@ -47,7 +47,7 @@ struct UpdateEvent
 struct Layer
 {
   uint32_t x=0,y=0,alpha=100;
-  SDL_Surface* surface=nullptr;
+  SDL_Surface surface;
 };
 
 class Window
@@ -63,7 +63,7 @@ class Window
     std::map<uint32_t,Layer> layers,layer_buffer;
     std::string icon,title;
     SDL_Window* sdl_window;
-    SDL_Surface* surface;
+    SDL_Renderer* sdl_renderer;
 };
 
 #endif
