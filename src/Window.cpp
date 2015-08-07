@@ -81,9 +81,9 @@ UpdateEvent Window::update()
     }
   }
   for (auto it : layers) {
-    SDL_RenderCopy(sdl_renderer,SDL_CreateTextureFromSurface(sdl_renderer,&it.second.surface),nullptr,nullptr);
-    SDL_RenderPresent(sdl_renderer);
+    SDL_RenderCopy(sdl_renderer,SDL_CreateTextureFromSurface(sdl_renderer,&it.second.surface),nullptr,&it.second.rect);
   }
+  SDL_RenderPresent(sdl_renderer);
   return u_evt;
 }
 
