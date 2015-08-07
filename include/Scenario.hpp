@@ -49,22 +49,6 @@ struct Parameter
 	} value;
 };
 
-
-/*
-32 OPCodes
-
-no comment - No implementation
-
-Unknown - Implemented; Purpose/Parameter's purpose not fully/at all known
-Implemented - A basic Parameter Echo, does nothing;might reflect a basic understanding of the parameters
-Untested - Implementation that should work, but were never tested.
-Working - A Working Implementation that was tested
-
-Next up:
-Discover 5,1,116,10E,113's purpose.
-
-*/
-
 class ScenarioRunner
 {
 	public:
