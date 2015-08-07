@@ -22,6 +22,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_image.h>
 
 inline void loadArchive(ScenarioRunner* sr,std::string type)
 {
@@ -44,16 +45,25 @@ inline void playBGM(ScenarioRunner* sr)
   Mix_PlayMusic(music,-1);
 }
 
-//Video
+//Graphics
 void Operation::image_set(ScenarioRunner* sr)
 {
-  uint32_t layer = sr->getDWORD();
-  std::string image = sr->getString();
+  uint32_t id = sr->getDWORD(),size=0;
+  SDL_RWops* rw = SDL_RWFromMem(sr->getResourceManager()->getFile("graphics",sr->getString(),size),size);
+  Layer layer;
+  layer.surface = *IMG_LoadPNG_RW(rw);
+  sr->getWindow()->setLayer(id,layer);
+
   sr->getDWORD();
   sr->getDWORD();
   sr->getDWORD();
   sr->getDWORD();
   sr->getDWORD();
+}
+void Operation::image_flush(ScenarioRunner* sr)
+{
+  sr->getDWORD();
+  sr->getWindow()->flushLayers(sr->getDWORD());
 }
 
 //Archive

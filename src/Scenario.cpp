@@ -164,8 +164,9 @@ void ScenarioRunner::runScenario(std::string name)
 		opcodes[0x0088] = Operation::scenario_title_set;
 		opcodes[0x0096] = Operation::set;
 		opcodes[0x0099] = Operation::add;
-		opcodes[0x00C8] = Operation::image_set;
 		opcodes[0x00A3] = Operation::scenario_enter;
+		opcodes[0x00C8] = Operation::image_set;
+		opcodes[0x00CA] = Operation::image_flush;
 		opcodes[0x00FA] = Operation::play_bgm;
 		opcodes[0x00FC] = Operation::play_uncategorized;
 		opcodes[0x00FE] = Operation::play_sfx;
