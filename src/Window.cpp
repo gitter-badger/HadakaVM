@@ -107,7 +107,7 @@ void Window::sleep(ScenarioRunner* sr,uint32_t ms,bool skippable)
     uint64_t c_old = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
     for (uint64_t c_now=c_old;c_now-c_old < ms;c_now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count())
     {
-        if (Window::update().type==UpdateEventType::CLICK) {
+        if (Window::update().type==UpdateEventType::CLICK || Window::update().type==UpdateEventType::EXIT) {
           skip=0;
           break;
         }
