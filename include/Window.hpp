@@ -46,7 +46,7 @@ struct UpdateEvent
 
 struct Layer
 {
-  uint32_t x=0,y=0,alpha=100;
+  uint32_t x=0,y=0;
   SDL_Surface surface;
   SDL_Rect rect;
 };
