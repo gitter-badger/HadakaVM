@@ -41,13 +41,22 @@ void Window::setLayer(uint32_t id,Layer layer)
 
 void Window::flushLayers(uint32_t fadeIn)
 {
+  uint64_t c_old = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+  for (uint64_t c_now=c_old;c_now-c_old < fadeIn;c_now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count())
+  {
+    for (auto& it : layer_buffer) {
+      if (layers.find(it.first)==layers.end()) continue;
+      SDL_SetSurfaceAlphaMod(&layers[it.first].surface,255-((c_now-c_old)*255)/fadeIn);
+    }
+    update();
+  }
   for (auto it : layer_buffer) {
     layers[it.first] = it.second;
     SDL_SetSurfaceAlphaMod(&layers[it.first].surface,0);
     SDL_SetSurfaceBlendMode(&layers[it.first].surface,SDL_BLENDMODE_ADD);
   }
   layer_buffer.clear();
-  uint64_t c_old = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+  c_old=std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
   for (uint64_t c_now=c_old;c_now-c_old < fadeIn;c_now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count())
   {
     for (auto& it : layers) {
