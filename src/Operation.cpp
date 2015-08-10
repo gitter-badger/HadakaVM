@@ -32,7 +32,8 @@ inline void loadArchive(ScenarioRunner* sr,std::string type)
 inline void playSFX(ScenarioRunner* sr)
 {
   uint32_t size=0;
-  SDL_RWops* rw = SDL_RWFromMem(sr->getResourceManager()->getFile("sound",sr->getString(),size),size);
+  char* buffer = sr->getResourceManager()->getFile("sound",sr->getString(),size);
+  SDL_RWops* rw = SDL_RWFromMem(buffer,size);
   Mix_Chunk* chunk = Mix_LoadWAV_RW(rw,1);
   Mix_PlayChannel(-1,chunk,0);
 }
@@ -40,7 +41,8 @@ inline void playSFX(ScenarioRunner* sr)
 inline void playBGM(ScenarioRunner* sr)
 {
   uint32_t size=0;
-  SDL_RWops* rw = SDL_RWFromMem(sr->getResourceManager()->getFile("music",sr->getString(),size),size);
+  char* buffer = sr->getResourceManager()->getFile("music",sr->getString(),size);
+  SDL_RWops* rw = SDL_RWFromMem(buffer,size);
   Mix_Music* music = Mix_LoadMUS_RW(rw,1);
   Mix_PlayMusic(music,-1);
 }
@@ -49,7 +51,8 @@ inline void playBGM(ScenarioRunner* sr)
 void Operation::image_set(ScenarioRunner* sr)
 {
   uint32_t id = sr->getDWORD(),size=0;
-  SDL_RWops* rw = SDL_RWFromMem(sr->getResourceManager()->getFile("graphics",sr->getString(),size),size);
+  char* buffer = sr->getResourceManager()->getFile("graphics",sr->getString(),size);
+  SDL_RWops* rw = SDL_RWFromMem(buffer,size);
 
   if (rw==0) ERROR("SDL_RWFromMem failed: "+string(SDL_GetError()));
 
