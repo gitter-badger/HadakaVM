@@ -51,8 +51,12 @@ void Operation::image_set(ScenarioRunner* sr)
   uint32_t id = sr->getDWORD(),size=0;
   SDL_RWops* rw = SDL_RWFromMem(sr->getResourceManager()->getFile("graphics",sr->getString(),size),size);
 
+  if (rw==0) ERROR("SDL_RWFromMem failed: "+string(SDL_GetError()));
+
   Layer layer;
   layer.surface = IMG_LoadPNG_RW(rw);
+
+  if (layer.surface==0) ERROR("IMG_LoadPNG_RW failed: "+string(SDL_GetError()));
 
   layer.rect.x = sr->getDWORD();
   layer.rect.y = sr->getDWORD();
