@@ -51,6 +51,7 @@ namespace Operation
   void set(ScenarioRunner* sr);
   void add(ScenarioRunner* sr);
   //Other
+  void sgf_call(ScenarioRunner* sr);
   void sleep(ScenarioRunner* sr);
   void exit(ScenarioRunner* sr);
   void stop(ScenarioRunner* sr);

@@ -172,6 +172,7 @@ void ScenarioRunner::runScenario(std::string name)
 		opcodes[0x00FE] = Operation::play_sfx;
 		opcodes[0x0111] = Operation::choice_add;
 		opcodes[0x0112] = Operation::choices_show;
+		opcodes[0x0118] = Operation::sgf_call;
 		opcodes[0x012F] = Operation::sleep;
 		opcodes[0xFFFF] = Operation::stop;
 

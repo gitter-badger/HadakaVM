@@ -156,6 +156,15 @@ void Operation::scenario_enter(ScenarioRunner* sr)
   sr->setPC(old_pc);
 }
 
+//SGF
+void Operation::sgf_call(ScenarioRunner* sr)
+{
+  sr->getDWORD();
+  sr->getString();
+  sr->getDWORD();
+  sr->getDWORD();
+}
+
 //Choice
 void Operation::choice_add(ScenarioRunner* sr)
 {
