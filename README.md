@@ -1,13 +1,13 @@
 # HadakaVM [![Build Status](https://travis-ci.org/spycrab/HadakaVM.svg)](https://travis-ci.org/spycrab/HadakaVM)
 Free implementation of Hadaka Shitsujis Game Engine
 
-## Demos
-HadakaVM Daily 10.08.15 - Booting up to the menu screen  
-[![HadakaVM Daily 10.08.15 - Booting up to the menu screen](http://img.youtube.com/vi/bf4CctMoAao/0.jpg)](http://www.youtube.com/watch?v=bf4CctMoAao)
-
 ## Status
 Currently the game is not playable, as only fragments of the engine are implemented.  
 See [Operation Codes](https://github.com/spycrab/HadakaVM/wiki/Operation-Codes)  
+
+## Demos
+HadakaVM Daily 10.08.15 - Booting up to the menu screen  
+[![HadakaVM Daily 10.08.15 - Booting up to the menu screen](http://img.youtube.com/vi/bf4CctMoAao/0.jpg)](http://www.youtube.com/watch?v=bf4CctMoAao)
 
 ## Supported plattforms
 
