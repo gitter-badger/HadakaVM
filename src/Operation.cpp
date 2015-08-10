@@ -34,7 +34,9 @@ inline void playSFX(ScenarioRunner* sr)
   uint32_t size=0;
   char* buffer = sr->getResourceManager()->getFile("sound",sr->getString(),size);
   SDL_RWops* rw = SDL_RWFromMem(buffer,size);
+  if (rw==0) ERROR("SDL_RWFromMem failed: "+string(SDL_GetError()));
   Mix_Chunk* chunk = Mix_LoadWAV_RW(rw,1);
+  if (chunk==0) ERROR("SDL_LoadWAV_RW failed: "+string(SDL_GetError()));
   Mix_PlayChannel(-1,chunk,0);
 }
 
@@ -43,7 +45,9 @@ inline void playBGM(ScenarioRunner* sr)
   uint32_t size=0;
   char* buffer = sr->getResourceManager()->getFile("music",sr->getString(),size);
   SDL_RWops* rw = SDL_RWFromMem(buffer,size);
+  if (rw==0) ERROR("SDL_RWFromMem failed: "+string(SDL_GetError()));
   Mix_Music* music = Mix_LoadMUS_RW(rw,1);
+  if (music==0) ERROR("SDL_LoadMUS_RW failed: "+string(SDL_GetError()));
   Mix_PlayMusic(music,-1);
 }
 
