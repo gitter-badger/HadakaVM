@@ -52,12 +52,12 @@ void Operation::image_set(ScenarioRunner* sr)
   SDL_RWops* rw = SDL_RWFromMem(sr->getResourceManager()->getFile("graphics",sr->getString(),size),size);
 
   Layer layer;
-  layer.surface = *IMG_LoadPNG_RW(rw);
+  layer.surface = IMG_LoadPNG_RW(rw);
 
   layer.rect.x = sr->getDWORD();
   layer.rect.y = sr->getDWORD();
-  layer.rect.w = layer.surface.w;
-  layer.rect.h = layer.surface.h;
+  layer.rect.w = layer.surface->w;
+  layer.rect.h = layer.surface->h;
 
   if (sr->getDWORD()) sr->getWindow()->setLayer(id,layer);
 

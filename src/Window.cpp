@@ -46,21 +46,21 @@ void Window::flushLayers(uint32_t fadeIn)
   {
     for (auto& it : layer_buffer) {
       if (layers.find(it.first)==layers.end()) continue;
-      SDL_SetSurfaceAlphaMod(&layers[it.first].surface,255-((c_now-c_old)*255)/fadeIn);
+      SDL_SetSurfaceAlphaMod(layers[it.first].surface,255-((c_now-c_old)*255)/fadeIn);
     }
     update();
   }
   for (auto it : layer_buffer) {
     layers[it.first] = it.second;
-    SDL_SetSurfaceAlphaMod(&layers[it.first].surface,0);
-    SDL_SetSurfaceBlendMode(&layers[it.first].surface,SDL_BLENDMODE_ADD);
+    SDL_SetSurfaceAlphaMod(layers[it.first].surface,0);
+    SDL_SetSurfaceBlendMode(layers[it.first].surface,SDL_BLENDMODE_ADD);
   }
   layer_buffer.clear();
   c_old=std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
   for (uint64_t c_now=c_old;c_now-c_old < fadeIn;c_now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count())
   {
     for (auto& it : layers) {
-      SDL_SetSurfaceAlphaMod(&layers[it.first].surface,((c_now-c_old)*255)/fadeIn);
+      SDL_SetSurfaceAlphaMod(layers[it.first].surface,((c_now-c_old)*255)/fadeIn);
     }
     update();
   }
@@ -101,7 +101,7 @@ UpdateEvent Window::update()
   }
   SDL_RenderClear(sdl_renderer);
   for (auto it : layers) {
-    SDL_Texture* texture = SDL_CreateTextureFromSurface(sdl_renderer,&it.second.surface);
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(sdl_renderer,it.second.surface);
     SDL_RenderCopy(sdl_renderer,texture,nullptr,&it.second.rect);
   }
   SDL_RenderPresent(sdl_renderer);
