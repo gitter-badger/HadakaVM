@@ -39,7 +39,8 @@ Every plattform that supports:
 - Add locale fix (Will probably result in a dependency on boost_locale)
 - Implement patch loading
 - Universal register
-- Add debugger
+- Add debugger  
+- Restructure ScenarioRunner  
 - Implement remaining opcodes
 - Implement missing graphics features
   - Proper rendering queue
